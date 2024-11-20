@@ -1,0 +1,19 @@
+.checkbox {
+  $self: &;
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  &__title {
+    padding-left: 15px;
+    opacity: 1;
+    font-size: 18px;
+  }
+  &--checked {
+    #{$self}__title {
+      text-decoration: line-through;
+      text-decoration-color: #000000;
+      animation: opacity 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
+    }
+  }
+}

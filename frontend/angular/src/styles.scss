@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'styles/utils/index';
+@font-face {
+  font-family: 'MontserratRegular';
+  src: url('/assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: $primary-color;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+}
+.main {
+  padding-top: 100px;
+}
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include media-min(xxl) {
+    max-width: 720px;
+  }
+}
+button {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  border: 0;
+  outline: 0;
+  background: none;
+  // color: var(--colorMain);
+  text-decoration: none;
+  text-transform: none;
+  text-align: center;
+  line-height: normal;
+  white-space: normal;
+
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  color: $primary-color;
+}
+
+form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+svg {
+  cursor: pointer;
+}
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+}

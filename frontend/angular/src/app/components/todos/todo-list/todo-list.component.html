@@ -1,0 +1,49 @@
+<div class="todoList" [ngClass]="{ 'todoList--opened': todoList.isOpened }">
+  <div class="todoList__title" fxLayoutAlign="start center">
+    <app-svg-icon
+      name="chevron"
+      [externalClass]="'svgIcon__chevron'"
+      [width]="'20px'"
+      [height]="'20px'"
+      [ngClass]="{ 'svgIcon__chevron--closed': !todoList.isOpened }"
+      (click)="toggleIsOpened(todoList.id)"
+    />
+    <span fxFlex="1 0 auto">
+      {{ todoList.title }}
+    </span>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <app-svg-icon
+        name="plus"
+        [externalClass]="'svgIcon__add'"
+        [width]="'20px'"
+        [height]="'20px'"
+        (click)="openModalAddList(todoList.id)"
+      />
+
+      <app-svg-icon
+        name="plus"
+        [externalClass]="'svgIcon__remove'"
+        [width]="'20px'"
+        [height]="'20px'"
+        (click)="removeList(todoList.id)"
+      />
+    </div>
+  </div>
+  <div
+    class="todoList__body"
+    [@openClose]="todoList.isOpened ? 'open' : 'closed'"
+  >
+    @if (todoList.todos && todoList.todos.length > 0) {
+      @for (todo of todoList.todos; track $index) {
+        <app-todo [todo]="todo" [listId]="todoList.id" />
+      }
+    } @else {
+      <div class="todoList__empty">Список задач пока пустой</div>
+    }
+  </div>
+  <div class="todoList__bottom" fxLayoutAlign="space-between center">
+    <app-todo-count-active [listId]="todoList.id" />
+    <app-todo-filter [listId]="todoList.id" />
+    <app-todo-clear [listId]="todoList.id" text="Clear completed" />
+  </div>
+</div>

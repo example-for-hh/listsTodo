@@ -1,0 +1,9 @@
+<ng-container [ngSwitch]="headingLevel">
+  <h1 *ngSwitchCase="'h1'">{{ getTitle() }}</h1>
+  <h2 *ngSwitchCase="'h2'">{{ getTitle() }}</h2>
+  <h3 *ngSwitchCase="'h3'">{{ getTitle() }}</h3>
+  <h4 *ngSwitchCase="'h4'">{{ getTitle() }}</h4>
+  <h5 *ngSwitchCase="'h5'">{{ getTitle() }}</h5>
+  <h6 *ngSwitchCase="'h6'">{{ getTitle() }}</h6>
+  <h1 *ngSwitchDefault>{{ getTitle() }}</h1>
+</ng-container>

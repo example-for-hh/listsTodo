@@ -1,0 +1,29 @@
+<div class="filter">
+  <span
+    class="filter__item"
+    [class.filter__item--active]="selectedFilter === filterAll"
+    tabindex="0"
+    (click)="handleFilterClick(filterAll)"
+    (keydown)="handleKey($event, filterAll)"
+  >
+    {{ filterAll }}
+  </span>
+  <span
+    class="filter__item"
+    [class.filter__item--active]="selectedFilter === filterActive"
+    tabindex="0"
+    (click)="handleFilterClick(filterActive)"
+    (keydown)="handleKey($event, filterActive)"
+  >
+    {{ filterActive }}
+  </span>
+  <span
+    class="filter__item"
+    [class.filter__item--active]="selectedFilter === filterArchive"
+    tabindex="0"
+    (click)="handleFilterClick(filterArchive)"
+    (keydown)="handleKey($event, filterArchive)"
+  >
+    Archive
+  </span>
+</div>

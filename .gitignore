@@ -1,0 +1,15 @@
+node_modules/
+.env*
+*.log
+coverage/
+build/
+dist/
+.vscode/
+package-lock.json
+
+# NextJs
+/frontend/next/.next/
+/frontend/next/out/
+
+
+/frontend/angular/.angular/

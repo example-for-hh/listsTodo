@@ -1,0 +1,21 @@
+.form__control {
+  width: 100%;
+}
+:host(:not(:first-child):not(:last-child)) .form__control {
+  margin: 15px 0;
+}
+
+:host(:only-child) .form__control {
+  margin: 0;
+}
+:host(:first-child) .form__control {
+  margin-bottom: 15px;
+}
+
+:host(:last-child) .form__control {
+  margin-top: 15px;
+}
+
+:host(:not(:first-child):not(:last-child)) .form__control {
+  margin: 15px 0;
+}

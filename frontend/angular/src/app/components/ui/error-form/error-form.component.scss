@@ -1,0 +1,10 @@
+.error {
+  position: relative;
+  &__message {
+    position: absolute;
+    right: 0px;
+    bottom: -15px;
+    color: red;
+    font-size: 12px;
+  }
+}

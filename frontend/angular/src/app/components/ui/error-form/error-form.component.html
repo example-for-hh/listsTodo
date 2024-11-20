@@ -1,0 +1,14 @@
+<div
+  *ngIf="control?.invalid || control?.dirty || control?.touched"
+  class="error"
+>
+  <span class="error__message" *ngIf="control?.errors?.required">{{
+    ERROR_REQUIRED
+  }}</span>
+  <span class="error__message" *ngIf="control?.errors?.email">{{
+    ERROR_EMAIL
+  }}</span>
+  <span class="error__message" *ngIf="control?.errors?.minlength"
+    >{{ ERROR_MIN_LENGTH }}: {{ control?.errors?.minlength?.requiredLength }}
+  </span>
+</div>

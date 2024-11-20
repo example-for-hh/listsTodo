@@ -1,0 +1,9 @@
+.next/
+build/
+dist/
+jest.config.*
+jest.setup.*
+next.config.*
+tsconfig.json
+fonts.d.ts
+.vscode/*

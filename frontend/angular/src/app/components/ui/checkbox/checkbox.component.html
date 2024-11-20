@@ -1,0 +1,15 @@
+<label
+  class="checkbox"
+  fxLayoutAlign="center center"
+  [ngClass]="{ 'checkbox--checked': checked }"
+>
+  <input type="checkbox" [checked]="checked" />
+  <app-svg-icon
+    name="checkbox"
+    [externalClass]="'svgIcon__checkbox'"
+    [width]="'34px'"
+    [height]="'34px'"
+    [ngClass]="{ 'svgIcon__checkbox--checked': checked }"
+  />
+  <span class="checkbox__title">{{ title }}</span>
+</label>

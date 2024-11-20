@@ -1,0 +1,11 @@
+dist/
+output/
+node_modules/
+src/environments/*
+angular.json
+package-lock.json
+src/**/*.generated.ts
+src/**/*.gen.ts
+src/**/*.spec.ts
+.vscode/*
+.angular/

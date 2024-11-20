@@ -1,0 +1,25 @@
+<main class="main">
+  <div class="container">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <app-title [headingLevel]="'h1'" [title]="title" [isCapitalized]="true" />
+      <app-svg-icon
+        name="plus"
+        [externalClass]="'svgIcon__add'"
+        [width]="'20px'"
+        [height]="'20px'"
+        (click)="openModal()"
+      />
+    </div>
+    @if (lists.length > 0) {
+      <div [ngStyle]="{ marginTop: '20px' }">
+        @for (list of lists; track $index) {
+          <app-todo-list [todoList]="list" />
+        }
+      </div>
+    } @else {
+      <app-title title="Список задач пуст" headingLevel="h2" />
+    }
+  </div>
+  <app-modal-create-list-todos title="Добавить новый лист" />
+  <app-modal-add-todo title="Добавить новую задачу" />
+</main>

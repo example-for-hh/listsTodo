@@ -1,0 +1,42 @@
+.svgIcon {
+  &__add {
+    transform: rotate(45deg);
+    fill: green;
+  }
+
+  &__remove {
+    fill: red;
+  }
+  &__checkbox {
+    display: block;
+    width: 36px;
+    height: 36px;
+    transform-origin: 50% 50%;
+    border-radius: 50%;
+    stroke-width: 5;
+    stroke: #2aff00;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    &--checked {
+      animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
+    }
+    circle {
+      stroke: rgb(0 0 0 / 20%);
+      stroke-width: 1px;
+      stroke-dasharray: 0;
+      fill: none;
+    }
+  }
+
+  &__chevron {
+    transform: rotateZ(0);
+    transition: transform 1s ease;
+    &--closed {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &__close {
+    fill: #000;
+  }
+}

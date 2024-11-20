@@ -1,0 +1,48 @@
+<app-modal *ngIf="isModalVisible$ | async" (modalClose)="handleClose()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <app-modal-header [title]="title"></app-modal-header>
+    <app-modal-body fxLayout="column">
+      <app-form-control>
+        <app-input
+          formControlName="title"
+          placeholder="Заголовок списка"
+          label="Заголовок списка"
+          name="title"
+        />
+        <ng-container *ngIf="submitted && form.get('title')?.errors">
+          <app-error-form [control]="form.get('title')" />
+        </ng-container>
+      </app-form-control>
+      <ng-container formArrayName="todos">
+        <ng-container *ngFor="let todo of todos.controls; let i = index">
+          <app-form-control [formGroupName]="i">
+            <app-input
+              formControlName="title"
+              [placeholder]="'Заголовок задачи ' + (i + 1)"
+              label="Заголовок задачи"
+              [name]="'title' + (i + 1)"
+            />
+            <ng-container *ngIf="submitted && todo.get('title')?.errors">
+              <app-error-form [control]="todo.get('title')" />
+            </ng-container>
+            <app-button
+              *ngIf="i > 0"
+              (click)="removeTodo(i)"
+              title="Удалить задачу"
+              additionalClass="text"
+            />
+          </app-form-control>
+        </ng-container>
+      </ng-container>
+    </app-modal-body>
+    <app-modal-footer>
+      <app-button
+        (click)="addTodos()"
+        title="Добавить задачу"
+        fxFlex="1 0 auto"
+      ></app-button>
+      <app-button type="submit" title="Отправить" />
+      <app-button title="Закрыть" (click)="handleClose()" />
+    </app-modal-footer>
+  </form>
+</app-modal>

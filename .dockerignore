@@ -1,0 +1,41 @@
+# Ignore rules for frontend/nextjs
+frontend/nextjs/node_modules
+
+frontend/nextjs/dist
+frontend/nextjs/.git
+frontend/nextjs/.vscode
+
+
+# Ignore rules for frontend/angular
+frontend/angular/node_modules
+frontend/angular/dist
+frontend/angular/*.log
+frontend/angular/logs
+frontend/angular/*.tmp
+frontend/angular/*.swp
+frontend/angular/*.swo
+frontend/angular/.vscode
+frontend/angular/.idea
+frontend/angular/.DS_Store
+
+
+frontend/angular/.git
+frontend/angular/.gitignore
+frontend/angular/*.md
+frontend/angular/tests
+
+# Ignore rules for backend/express
+backend/express/node_modules
+backend/express/*.log
+backend/express/logs
+backend/express/*.tmp
+backend/express/*.swp
+backend/express/*.swo
+backend/express/.vscode
+backend/express/.idea
+backend/express/.DS_Store
+
+backend/express/.git
+backend/express/.gitignore
+backend/express/*.md
+backend/express/tests

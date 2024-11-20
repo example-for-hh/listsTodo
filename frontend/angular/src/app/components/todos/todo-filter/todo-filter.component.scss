@@ -1,0 +1,11 @@
+.filter {
+  position: relative;
+  &__item {
+    padding: 0px 10px;
+    cursor: pointer;
+    &--active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}

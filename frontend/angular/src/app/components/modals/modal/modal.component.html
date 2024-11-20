@@ -1,0 +1,19 @@
+<div class="modal" fxLayout="row" fxLayoutAlign="center center" [@modalState]>
+  <div class="modal__content" fxFlexAlign="flex-start">
+    <div class="modal__close">
+      <app-button
+        [isIcon]="true"
+        [additionalClass]="'modal'"
+        (click)="closeModal()"
+      >
+        <app-svg-icon
+          name="plus"
+          width="20px"
+          height="20px"
+          [externalClass]="'svgIcon__close'"
+        />
+      </app-button>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

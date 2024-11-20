@@ -1,0 +1,10 @@
+dist/
+output/
+node_modules/
+src/environments/*
+src/**/*.generated.ts
+src/**/*.gen.ts
+src/**/*.spec.ts
+angular.json
+package-lock.json
+yarn.lock

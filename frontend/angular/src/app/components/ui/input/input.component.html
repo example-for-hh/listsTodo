@@ -1,0 +1,17 @@
+<div [ngClass]="wrapperClass">
+  <label *ngIf="label" [ngClass]="labelClass" [for]="name">{{ label }}</label>
+  <div class="input-wrapper">
+    <input
+      [id]="name"
+      class="input"
+      [ngClass]="inputClass"
+      [type]="showPassword ? 'text' : type"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      (input)="getChangeEvent($event)"
+      (blur)="onTouched(); onBlur.emit()"
+      [value]="value"
+      [name]="name"
+    />
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<button
+  class="btn"
+  [ngClass]="getButtonClasses()"
+  fxLayoutAlign="center center"
+  [disabled]="isDisabled"
+  [type]="type"
+>
+  <!-- @if (!isIcon) {
+    <span>{{ title }}</span>
+  } @else {
+    <ng-content />
+  } -->
+  <ng-container *ngIf="!isIcon; else iconContent">
+    <span>{{ title }}</span>
+  </ng-container>
+  <ng-template #iconContent>
+    <ng-content></ng-content>
+  </ng-template>
+</button>

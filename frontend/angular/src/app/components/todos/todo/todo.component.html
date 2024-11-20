@@ -1,0 +1,16 @@
+<div class="todo" fxLayoutAlign="space-between center">
+  <app-checkbox
+    [title]="todo.title"
+    [checked]="todo.checked"
+    fxLayoutAlign="flex-start center"
+    class="todo__checkbox"
+    (click)="updateTodo(listId, todo.id)"
+  />
+  <app-svg-icon
+    name="plus"
+    [externalClass]="'svgIcon__remove'"
+    [width]="'20px'"
+    [height]="'20px'"
+    (click)="removeTodo(listId, todo.id)"
+  />
+</div>

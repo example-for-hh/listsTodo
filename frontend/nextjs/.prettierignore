@@ -1,0 +1,10 @@
+node_modules
+.next
+build
+dist
+.env*
+jest.config.*
+next.config.*
+tsconfig.json
+fonts.d.ts
+.vscode/*
