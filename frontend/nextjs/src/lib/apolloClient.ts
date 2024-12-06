@@ -4,19 +4,31 @@ import { createClient } from 'graphql-ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { TTodoItem } from '@src/types';
 import { FILTER_ACTIVE, FILTER_ALL, FILTER_ARCHIVE } from '@vars/todos';
+import getConfig from 'next/config';
+import fetch from 'cross-fetch';
+import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 
 
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
+
+const apiUri = serverRuntimeConfig.apiUrl || publicRuntimeConfig.apiUrl
+const apiUriWs = serverRuntimeConfig.apiUrlWs || publicRuntimeConfig.apiUrlWs
+
+if (process.env.NODE_ENV !== 'production') {
+  loadDevMessages();
+  loadErrorMessages();
+}
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: apiUri,
+  fetch,
 });
-
 
 const wsLink =
   typeof window !== 'undefined'
     ? new GraphQLWsLink(
       createClient({
-        url: 'ws://localhost:4000/subscriptions',
+        url: apiUriWs,
         retryAttempts: 5,
         shouldRetry: () => true,
         on: {

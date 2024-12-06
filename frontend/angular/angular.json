@@ -79,9 +79,16 @@
           
           },
           "configurations": {
+            "production": {
+              "buildTarget": "app:build:production",
+              "proxyConfig": "src/environments/proxy.conf.prod.json",
+              "port": 443,
+              "disableHostCheck": false,
+              "host": "localhost"
+            },
             "development": {
               "buildTarget": "app:build:development",
-              "proxyConfig": "src/proxy.conf.json",
+              "proxyConfig": "src/environments/proxy.conf.json",
               "port": 4200,
               "disableHostCheck": false,
               "host": "localhost"

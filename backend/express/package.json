@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn src/server.ts",
-    "dev:debug": "ts-node-dev --inspect=0.0.0.0:9229 src/server.ts",
-    "build": "tsc",
-    "start": "ts-node src/server.ts"
+    "dev:debug": "cross-env NODE_ENV=development ts-node-dev --inspect=0.0.0.0:9229 src/server.ts",
+    "build": "cross-env NODE_ENV=production tsc",
+    "start": "cross-env NODE_ENV=production ts-node src/server.ts",
+    "start:prod": "cross-env NODE_ENV=production ts-node dist/server.js",
+    "build:prod": "cross-env NODE_ENV=production tsc"
   },
   "author": "Denis Plotnikoff | https://t.me/den_plotnikoff",
   "license": "ISC",
@@ -18,6 +20,8 @@
     "@types/graphql": "^14.5.0",
     "@types/node": "^20.14.2",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",

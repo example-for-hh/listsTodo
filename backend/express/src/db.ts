@@ -1,8 +1,12 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const configFilePath = path.resolve(__dirname, `../ormconfig.json`);
+const environment = process.env.NODE_ENV || 'development';
+
+const configFilePath = path.resolve(__dirname, `../ormconfig.${environment}.json`);
 
 const getOrmConfig = (): DataSourceOptions => {
     try {

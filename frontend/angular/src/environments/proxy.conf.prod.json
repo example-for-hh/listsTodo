@@ -1,0 +1,9 @@
+{
+    "/graphql": {
+      "target": "https://localhost",
+      "pathRewrite": { "^/graphql": "" },
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

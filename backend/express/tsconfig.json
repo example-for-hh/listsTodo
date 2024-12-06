@@ -10,7 +10,9 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "lib": ["esnext.asynciterable"],
+    "lib": [
+      "esnext.asynciterable"
+    ],
     "baseUrl": "./",
   },
   "include": [

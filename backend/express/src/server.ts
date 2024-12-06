@@ -3,7 +3,8 @@ import cors, { CorsOptions } from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
-import http from 'http';
+import fs from 'fs';
+import https from 'https';
 import express, { Application } from 'express';
 import { schema } from './schema';
 import { AppDataSource } from './db';
@@ -13,38 +14,52 @@ const app: Application = express();
 
 AppDataSource.initialize().then(() => {
 
+    const originUrl = process.env.NODE_ENV != 'development'
+        ? ['https://localhost']
+        :
+        ['http://localhost:4200', 'http://localhost:3000',]
+
     const corsOptions: CorsOptions = {
-        origin: ['http://localhost:4200', 'http://localhost:3000'],
+        origin: originUrl,
         credentials: true,
+        methods: ['POST', 'GET', ''],
         optionsSuccessStatus: 200
     };
 
     app.use(cors(corsOptions));
+
+    const graphiqlEnabled: boolean = process.env.NODE_ENV === 'development';
 
     app.use(
         '/graphql',
         graphqlHTTP({
             schema,
             rootValue: resolvers,
-            graphiql: true,
+            graphiql: graphiqlEnabled,
         })
     );
 
-    const PORT: number = 4000;
+    const PORT = process.env.PORT || 8443;
 
 
-    const server = http.createServer(app);
 
+    const sslOptions = {
+        key: fs.readFileSync('/app/ssl/localhost.key'), // путь внутри контейнера Docker
+        cert: fs.readFileSync('/app/ssl/localhost.crt'), // путь внутри контейнера Docker
+    };
+
+    const httpsServer = https.createServer(sslOptions, app);
     const wsServer = new WebSocketServer({
-        server,
+        server: httpsServer,
         path: '/subscriptions',
     });
 
 
     useServer({ schema }, wsServer)
 
-    server.listen(PORT, () => {
+    httpsServer.listen(PORT, () => {
         console.log(`Сервер работает на порту ${PORT}`);
+
     });
 
 }).catch((error) => console.log('Ошибка инициализации базы данных:', error));
