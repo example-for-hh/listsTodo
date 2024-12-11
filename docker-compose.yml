@@ -63,7 +63,7 @@ services:
       - PORT=8443
     hostname: host.docker.internal
     volumes:
-      - ./backend/express:/app
+      - express:/app/dist
       - ssl-certs:/app/ssl
     command: npm run start:prod
     depends_on:
@@ -109,6 +109,7 @@ networks:
     driver: bridge
 
 volumes:
+  express:
   angular:
   next:
   pgdata:

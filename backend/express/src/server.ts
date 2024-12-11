@@ -44,8 +44,8 @@ AppDataSource.initialize().then(() => {
 
 
     const sslOptions = {
-        key: fs.readFileSync('/app/ssl/localhost.key'), // путь внутри контейнера Docker
-        cert: fs.readFileSync('/app/ssl/localhost.crt'), // путь внутри контейнера Docker
+        key: fs.readFileSync('/app/ssl/localhost.key'),
+        cert: fs.readFileSync('/app/ssl/localhost.crt'),
     };
 
     const httpsServer = https.createServer(sslOptions, app);
@@ -59,7 +59,6 @@ AppDataSource.initialize().then(() => {
 
     httpsServer.listen(PORT, () => {
         console.log(`Сервер работает на порту ${PORT}`);
-
     });
 
 }).catch((error) => console.log('Ошибка инициализации базы данных:', error));
